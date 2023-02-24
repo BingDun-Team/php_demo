@@ -12,16 +12,14 @@ $timeAt = "1675750472";
 $sign = hash_hmac('sha256', $puzzleToken, $authID);
 
 //组装参数
-$query = array(
+$parameters = array(
     "auth_id" => $authID,
     "auth_secret_key" => $authSecretKey,
     "time_at" => $timeAt,
     "sign" => $sign,
 );
 
-$res = requestPost($reviewApiUrl, $query);
-var_dump($res);
-
+$res = requestPost($reviewApiUrl, $parameters);
 if (isset($res["code"]) && $res["code"]==0) {
     //二次校验成功 开始处理业务逻辑
 }else{
@@ -44,9 +42,6 @@ function requestPost($url, $postData)
     $context = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
     $arrData = json_decode($result, TRUE);
-    if (isset($arrData["code"]) && $arrData["code"] == 0) {
-        return $arrData;
-    } else {
-        return [];
-    }
+
+    return $arrData;
 }
