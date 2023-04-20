@@ -2,11 +2,11 @@
 error_reporting(0);
 
 //接口信息
-$puzzleToken = "8bb72d21ee65e325c548da0e04bdd3eb";
+$puzzleToken = "your puzzle_token";
 $reviewApiUrl = "https://bingdun.apis.show/api/review?puzzle_token=".$puzzleToken;
-$authID = "6e565a15d7da27b5d1c949357761a8e4";
-$authSecretKey = "912097369277ecb5dac3d1bd7ab00d2e";
-$timeAt = "1675750472";
+$authID = "your auth_id";
+$authSecretKey = "your auth_secret_key";
+$timeAt = time();
 
 //生成签名
 $sign = hash_hmac('sha256', $puzzleToken, $authID);
