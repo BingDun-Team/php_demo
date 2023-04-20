@@ -8,6 +8,7 @@ $authID = "your auth_id";
 $authSecretKey = "your auth_secret_key";
 $timeAt = time();
 
+
 //生成签名
 $sign = hash_hmac('sha256', $puzzleToken, $authID);
 
